@@ -1,5 +1,22 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result {
+  margin-top: 70px;
+}
+
 .App {
   text-align: center;
+  margin-top: 100px;
 }
 
 .App-logo {
@@ -26,6 +43,11 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.dice {
+  padding: 20px;
+  border: 1px, solid, black;
 }
 
 @keyframes App-logo-spin {
