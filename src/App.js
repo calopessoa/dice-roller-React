@@ -58,8 +58,6 @@ function App() {
 
 export default App;
 
-// *** Criar Context/Provider para gestão de estados e componentizar os elementos da página. DONE - commit it when connection is restored.
-
 // Implantar funcionalidade do Botão : Resolver Dado.
 
 // Criar API para ter um banco de dados dos personagens e a tradução de suas faces em strings no JSON.
