@@ -1,40 +1,65 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import Dice from 'react-dice-roll';
 import './App.css';
-import d1 from './dice-01.svg';
-import d2 from './dice-02.svg';
-import d3 from './dice-03.svg';
-import d4 from './dice-04.svg';
-import d5 from './dice-05.svg';
-import d6 from './dice-06.svg';
+import catchValue from './helpers';
+import d1 from './assets/dice1.png';
+import d2 from './assets/dice2.png';
+import d3 from './assets/dice3.png';
+import d4 from './assets/dice4.png';
+import d5 from './assets/dice5.png';
+import d6 from './assets/dice6.png';
+import diceRolling from './assets/0004526.mp3';
+import Box from './components/CommandBox';
+import Context from './context/Context';
 
 function App() {
-  const dieFaces = [
-    d1,
-    d2,
-    d3,
-    d4,
-    d5,
-    d6,
-  ];
-  const [result, setResult] = useState('6');
-  const catchValue = (value) => { setResult(value) }
+  const diceFaces = [d1, d2, d3, d4, d5, d6];
+
+  const {
+    setResult1, setResolve1,
+    setResult2, setResolve2,
+    setIsDisabled1, setIsDisabled2,
+    isDisabled1, isDisabled2
+  } = useContext(Context)
+
+  const triggers = ['Enter', 'click'];
 
   return (
-    <div className='container'>
-      <div className="App">
+    <div className='home-container'>
+      <div className="box-dice">
         <Dice
           defaultValue={6}
           size={200}
-          onRoll={(value) => catchValue(value)}
-          faces={dieFaces}
+          onRoll={(value) => catchValue(value, setResolve1, setResult1, setIsDisabled1)}
+          faces={diceFaces}
+          triggers={triggers}
+          disabled={isDisabled1}
+          sound={diceRolling}
+          // cheatValue={isCheated && cheatValue}
+        />
+
+        <Dice
+          defaultValue={6}
+          size={200}
+          onRoll={(value) => catchValue(value, setResolve2, setResult2, setIsDisabled2)}
+          faces={diceFaces}
+          triggers={triggers}
+          disabled={isDisabled2}
+          sound={diceRolling}
+          // cheatValue={'3'}
         />
       </div>
 
-      <article className="result">The die's result is {result}</article>
+      <Box />
 
     </div>
   );
 }
 
 export default App;
+
+// *** Criar Context/Provider para gestão de estados e componentizar os elementos da página. DONE - commit it when connection is restored.
+
+// Implantar funcionalidade do Botão : Resolver Dado.
+
+// Criar API para ter um banco de dados dos personagens e a tradução de suas faces em strings no JSON.

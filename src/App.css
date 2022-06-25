@@ -4,57 +4,91 @@
   box-sizing: border-box;
 }
 
-.container {
+body {
+  background-color: #1b1a1a;
+}
+
+input {
+  height: 30px;
+  font-size: 16px;
+  padding-left: 5px;
+}
+
+button {
+  padding: 6px;
+  font-size: 16px;
+  border: 1px solid black;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+._3dface {
+  border-radius: 28px;
+  border: 4px solid red;
+  /* box-shadow: 29px 31px 13px -12px rgba(250, 250, 250, 0.25); */
+}
+
+.home-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
+  flex-flow: column nowrap;
+  height: 100vh;
 }
 
-.result {
-  margin-top: 70px;
-}
-
-.App {
-  text-align: center;
-  margin-top: 100px;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.box-dice {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-evenly;
+  flex-flow: row nowrap;
+  width: 60%;
+}
+
+.box-options {
+  align-items: center;
+  border: 1px solid purple;
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: column nowrap;
+  height: 150px;
+  width: 60%;
+}
+
+.box-options  .options-1 {
+  border: 3px solid white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-flow: row nowrap;
+  height: 60%;
+  width: 100%;
+}
+
+.box-options .options-1 div {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-flow: column nowrap;
+  width: 50%;
+}
+
+.box-options .options-1 div p {
   color: white;
+  font-size: 18px;
 }
 
-.App-link {
-  color: #61dafb;
+.box-options .options-2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 3px solid white;
+  height: 40%;
+  width: 100%;
 }
 
-.dice {
-  padding: 20px;
-  border: 1px, solid, black;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.box-options .options-2 div {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-flow: row nowrap;
 }
