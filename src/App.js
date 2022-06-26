@@ -16,10 +16,11 @@ function App() {
   const diceFaces = [d1, d2, d3, d4, d5, d6];
 
   const {
+    defaultValue,
     setResult1, setResolve1,
     setResult2, setResolve2,
     setIsDisabled1, setIsDisabled2,
-    isDisabled1, isDisabled2
+    isDisabled1, isDisabled2,
   } = useContext(Context)
 
   const triggers = ['Enter', 'click'];
@@ -27,21 +28,23 @@ function App() {
   return (
     <div className='home-container'>
       <div className="box-dice">
-        <Dice
-          defaultValue={6}
-          size={200}
-          onRoll={(value) => catchValue(value, setResolve1, setResult1, setIsDisabled1)}
-          faces={diceFaces}
-          triggers={triggers}
-          disabled={isDisabled1}
-          sound={diceRolling}
-          // cheatValue={isCheated && cheatValue}
-        />
+        {/* <span style={{ visibility: visibility }}> */}
+          <Dice
+            defaultValue={defaultValue}
+            size={200}
+            onRoll={(value) => catchValue(value, setResolve1, setResult1)}
+            faces={diceFaces}
+            triggers={triggers}
+            disabled={isDisabled1}
+            sound={diceRolling}
+            // cheatValue={isCheated && cheatValue}
+            />
+        {/* </span> */}
 
         <Dice
           defaultValue={6}
           size={200}
-          onRoll={(value) => catchValue(value, setResolve2, setResult2, setIsDisabled2)}
+          onRoll={(value) => catchValue(value, setResolve2, setResult2)}
           faces={diceFaces}
           triggers={triggers}
           disabled={isDisabled2}

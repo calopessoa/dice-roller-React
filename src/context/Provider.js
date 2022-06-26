@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Context from './Context';
 
 const Provider = ({ children }) => {
+  const [defaultValue, setDefaultValue] = useState('6')
   const [result1, setResult1] = useState('Roll me!');
   const [resolve1, setResolve1] = useState('')
   const [result2, setResult2] = useState('Roll me!');
@@ -10,8 +11,11 @@ const Provider = ({ children }) => {
   const [cheatValue, setCheatvalue] = useState('');
   const [isDisabled1, setIsDisabled1] = useState(false);
   const [isDisabled2, setIsDisabled2] = useState(false);
+  // const [visibility, setVisibility] = useState('visible');
 
   const globalStates = {
+    defaultValue,
+    setDefaultValue,
     result1,
     setResult1,
     result2,
@@ -25,7 +29,9 @@ const Provider = ({ children }) => {
     isDisabled1,
     setIsDisabled1,
     isDisabled2,
-    setIsDisabled2
+    setIsDisabled2,
+    // visibility,
+    // setVisibility,
   }
 
   return (

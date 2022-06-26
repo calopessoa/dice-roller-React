@@ -1,28 +1,28 @@
-const catchValue = (value, func1, func2, func3) => {
+const catchValue = (value, func1, func2) => {
 
   switch (value) {
     case 1:
-      func1(`Resolva para `)
-      func2('causar 1 dano à distância')
+      func1(`Resolve it to `)
+      func2('cause 1 ranged damage')
       break;
     case 2:
-      func1(`Resolva para `)
-      func2('causar 2 dano à distância')
+      func1(`Resolve it to `)
+      func2('cause 2 ranged damage')
       break;
     case 3:
-      func1(`Resolva para `)
-      func2('virar 2 dados para qualquer lado')
+      func1(`Resolve it to `)
+      func2('turn 2 of your dice to any side')
       break;
     case 6:
       func1(`Seu dado é `)
       func2('blank')
       break;
     default:
-      func1(`Resolva para `)
-      func2('colher 1 recurso')
+      func1(`Resolve it to `)
+      func2('get 1 resource')
       break;
   }
-  func3(true);
+  // func3(true);
 };
 
 export default catchValue;

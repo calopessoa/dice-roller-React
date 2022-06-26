@@ -1,16 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Context from '../context/Context';
 
 function Box() {
   const [isCheated, setCheated] = useState(false);
+  const [hideSelection, setHideSelection] = useState(true);
 
-  const { resolve1, resolve2, result1, result2,
+  const { setDefaultValue, resolve1, resolve2, result1, result2,
     setIsDisabled1, setIsDisabled2, cheatValue,
-    setCheatvalue } = useContext(Context);
+    setCheatvalue, setResult1, setResolve1,
+    setResult2, setResolve2 } = useContext(Context);
 
-  const reRoll = () => {
+  const reset = () => {
     setIsDisabled1(false);
     setIsDisabled2(false);
+    setDefaultValue('6');
+    setResult1('Roll me!');
+    setResolve1('');
+    setResult2('Roll me!');
+    setResolve2('');
   }
 
   const handleChange = ({ target }) => {
@@ -20,12 +27,17 @@ function Box() {
   const setDie = () => setCheatvalue(!cheatValue);
 
   // Building the function that resolves the dice; if their value include a "virar" word, it means that the user will be able to cheat, or turn dice faces.
-  const resolveDie = (value) => {
-    const filterFocus = result1
-      .filter((e) => value === e.includes('virar'));
-    if (filterFocus === true) {
+  const resolveDie = (disable) => {
+    if (result1.includes('turn')) {
       setCheated(true);
+      setHideSelection(false);
+      console.log('hello, there!');
+    } else if (result1.includes('blank')) {
+      console.log(`You can't resolve blanks`);
+    } else {
+      console.log(result1);
     }
+    disable(true);
   }
 
   return (
@@ -33,16 +45,31 @@ function Box() {
       <section className='options-1'>
         <div>
           <button
-            onClick={resolveDie}
+            onClick={() => resolveDie(setIsDisabled1)}
           >
             Resolver Dado 1
           </button>
           {/* Insert a Select component to show up options to change that die into. */}
+
+          <select
+            hidden={hideSelection}
+          >
+            <option value="">1</option>
+            <option value="">2</option>
+            <option value="">3</option>
+            <option value="">4</option>
+            <option value="">5</option>
+            <option value="">6</option>
+
+          </select>
+
           <p>{resolve1} {result1}</p>
         </div>
 
         <div>
-          <button>
+        <button
+            onClick={() => resolveDie(setIsDisabled2)}
+          >
             Resolver Dado 2
           </button>
           <p>{resolve2} {result2}</p>
@@ -66,9 +93,9 @@ function Box() {
 
         <button
           className='result'
-          onClick={reRoll}
+          onClick={reset}
         >
-          Reroll!
+          Reset!
         </button>
       </section>
     </div>
