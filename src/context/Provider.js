@@ -8,9 +8,12 @@ const Provider = ({ children }) => {
   const [resolve1, setResolve1] = useState('')
   const [result2, setResult2] = useState('Roll me!');
   const [resolve2, setResolve2] = useState('');
-  const [cheatValue, setCheatvalue] = useState('');
   const [isDisabled1, setIsDisabled1] = useState(false);
   const [isDisabled2, setIsDisabled2] = useState(false);
+  const [isCheated, setCheated] = useState(false);
+  const [cheatValue, setCheatvalue] = useState('6');
+  const [disableResolve1, setDisableResolve1] = useState(false);
+  const [disableResolve2, setDisableResolve2] = useState(false);
   // const [visibility, setVisibility] = useState('visible');
 
   const globalStates = {
@@ -30,6 +33,12 @@ const Provider = ({ children }) => {
     setIsDisabled1,
     isDisabled2,
     setIsDisabled2,
+    isCheated,
+    setCheated,
+    disableResolve1,
+    setDisableResolve1,
+    disableResolve2,
+    setDisableResolve2,
     // visibility,
     // setVisibility,
   }
