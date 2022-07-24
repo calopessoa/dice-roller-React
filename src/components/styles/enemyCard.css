@@ -1,5 +1,14 @@
+.enemy-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row nowrap;
+  /* border: 1px solid red; */
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 .enemy-card {
   color: white;
-  display: flex;
-  justify-content: end;
+  display: inline-flex;
+  border: 1px solid white;
 }

@@ -1,17 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import CharContext from '../context/CharContext';
 import Context from '../context/Context';
 
-function Box() {
-  const [hideSelection, setHideSelection] = useState(true);
-
+function CommandBox() {
   const { resolve1, resolve2, result1, result2,
     isDisabled1, setIsDisabled1, isDisabled2, setIsDisabled2,
     setResult1, setResolve1, setResult2, setResolve2,
     setCheated, disableResolve1, setDisableResolve1,
     disableResolve2, setDisableResolve2 } = useContext(Context);
 
-  const { setGlobalValue } = useContext(CharContext);
+  const { setGlobalValue, setHideSelection } = useContext(CharContext);
 
   const reset = () => {
     setIsDisabled1(false);
@@ -41,25 +39,27 @@ function Box() {
     setDisableResolve2(true);
   }
 
+  const resolveDie = (resolution, setDisable, lock, disable) => {
+    const arr = resolution.split(' ');
+    const getNumber = -(arr[1]);
 
-  const arr = result1.split(' ');
-  const getNumber = -(arr[1]);
-
-  const resolveDie = (resolution, disable, lock) => {
     if (resolution.includes('resource')) {
-      disable(true);
+      setDisable(true);
       console.log(resolution);
     } else if (resolution.includes('blank')) {
       console.log(`You can't resolve BLANKS`);
     } else if (resolution.includes('turn')) {
+      // if (disable === true) {
+      //   setHideSelection(true);
+      // }
+      setDisable(true);
       setCheated(true);
       setHideSelection(false);
-      disable(true);
     } else if (resolution.includes('special')) {
-      disable(true);
+      setDisable(true);
     } else {
       setGlobalValue(getNumber);
-      disable(true);
+      setDisable(true);
       console.log(resolution);
     }
     lock(true);
@@ -70,31 +70,19 @@ function Box() {
       <section className='options-1'>
         <div>
           <button
-            onClick={() => resolveDie(result1, setIsDisabled1,setDisableResolve1)}
+            onClick={() => resolveDie(result1, setIsDisabled1,setDisableResolve1, isDisabled1)}
             disabled={disableResolve1}
           >
             Resolver Dado 1
           </button>
           {/* Insert a Select component to show up options to change that die into. */}
 
-          <select
-            hidden={hideSelection}
-          >
-            <option value="">1</option>
-            <option value="">2</option>
-            <option value="">3</option>
-            <option value="">4</option>
-            <option value="">5</option>
-            <option value="">6</option>
-
-          </select>
-
           <p>{resolve1} {result1}</p>
         </div>
 
         <div>
         <button
-            onClick={() => resolveDie(result2, setIsDisabled2, setDisableResolve2)}
+            onClick={() => resolveDie(result2, setIsDisabled2, setDisableResolve2, isDisabled2)}
             disabled={disableResolve2}
           >
             Resolver Dado 2
@@ -104,19 +92,6 @@ function Box() {
       </section>
 
       <section className='options-2'>
-        {/* <div>
-          <input
-            type="text"
-            onChange={handleChange}
-          />
-
-          <button
-            onClick={setDie}
-            disabled={true}
-          >
-            Set Die
-          </button>
-        </div> */}
 
         <button
           className='result'
@@ -129,4 +104,4 @@ function Box() {
   )
 }
 
-export default Box;
+export default CommandBox;

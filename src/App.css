@@ -33,7 +33,7 @@ button {
   align-items: center;
   justify-content: space-evenly;
   flex-flow: column nowrap;
-  height: 100vh;
+  height: 90vh;
 }
 
 .box-dice {

@@ -14,7 +14,7 @@ function EnemyCard() {
   }
 
   return (
-    <>
+    <div className='enemy-container'>
       <section
           className='enemy-card'
           onClick={() => applyResolution(setEnemyLife1, enemyLife1, 1)}
@@ -31,7 +31,7 @@ function EnemyCard() {
           <p>Life: {enemyLife2}</p>
       </section>
 
-    </>
+    </div>
   )
 }
 
