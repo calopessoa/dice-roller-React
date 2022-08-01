@@ -1,28 +1,56 @@
-const catchValue = (value, func1, func2, func3) => {
+const catchValue = (value, expression, command, disable) => {
 
   switch (value) {
     case 1:
-      func1(`Resolva para `)
-      func2('causar 1 dano à distância')
+      expression(`Resolve it to `)
+      command('cause 1 ranged damage')
       break;
     case 2:
-      func1(`Resolva para `)
-      func2('causar 2 dano à distância')
+      expression(`Resolve it to `)
+      command('cause 2 ranged damage')
       break;
     case 3:
-      func1(`Resolva para `)
-      func2('virar 2 dados para qualquer lado')
+      expression(`Resolve it to `)
+      command('turn 2 of your dice to any side')
       break;
     case 6:
-      func1(`Seu dado é `)
-      func2('blank')
+      expression(`Your die is `)
+      command('blank')
+      disable(true);
       break;
     default:
-      func1(`Resolva para `)
-      func2('colher 1 recurso')
+      expression(`Resolve it to `)
+      command('get 1 resource')
       break;
   }
-  func3(true);
+  // func3(true);
 };
+
+// const resolveDie = (resolution, disable) => {
+
+//   switch (resolution) {
+//     case resolution.includes('resource'):
+//       console.log(resolution);
+//       disable(true);
+//       break;
+//     case resolution.includes('blank'):
+//       console.log(`You can't resolve blanks`);
+//       break;
+//     case resolution.includes('turn'):
+//       setCheated(true);
+//       setHideSelection(false);
+//       disable(true);
+//       break;
+//     case resolution.includes('special'):
+//       // func1(`Your die is `)
+//       disable(true);
+//       break;
+//     default:
+//       console.log(resolution);
+//       setGlobalValue(getNumber);
+//       disable(true);
+//       break;
+//   }
+// }
 
 export default catchValue;

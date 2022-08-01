@@ -4,13 +4,16 @@ import './index.css';
 import Provider from './context/Provider';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import CharProvider from './context/CharProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-    <Provider>
+  <Provider>
+    <CharProvider>
       <App />
-    </Provider>
+    </CharProvider>
+  </Provider>
 
 );
 
